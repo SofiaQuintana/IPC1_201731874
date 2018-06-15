@@ -5,10 +5,14 @@
  */
 package medievil;
 
+import java.awt.Image;
+
 /**
  *
  * @author zofia
  */
-public class Character {
+abstract class Character {
+    private Image image;
+    private String name;
     
 }
