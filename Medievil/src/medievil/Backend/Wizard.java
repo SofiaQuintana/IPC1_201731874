@@ -17,9 +17,8 @@ public class Wizard {
     public static final int DISTANCE = 4;
     private int position;
 
-    public Wizard(int position, String path) {
+    public Wizard(int position) {
         setPosition(position);
-        setImagePath(path);
     }
 
     public int getPosition() {
