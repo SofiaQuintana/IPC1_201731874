@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package medievil;
+package medievil.Backend;
 
 /**
  *
@@ -13,11 +13,13 @@ public class Player {
     private String name;
     private Character[] characters;
     private int lifesQuantity;
-
-    public Player(String name, Character[] characters, int lifesQuantity) {
+    private int playerNumber;
+    
+    public Player(String name, Character[] characters, int lifesQuantity, int playerNumber) {
         this.name = name;
         this.characters = characters;
         this.lifesQuantity = lifesQuantity;
+        this.playerNumber = playerNumber;
     }
 
     public String getName() {
@@ -42,6 +44,10 @@ public class Player {
 
     public void setLifesQuantity(int lifesQuantity) {
         this.lifesQuantity = lifesQuantity;
+    }
+
+    public int getPlayerNumber() {
+        return playerNumber;
     }
     
     

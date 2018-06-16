@@ -3,16 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package medievil;
-
-import java.awt.Image;
+package medievil.Backend;
 
 /**
  *
  * @author zofia
  */
 public class Princess {
-    public static final String IMAGE_PATH = "";
+    private String imagePath = "";
     public static final String POWER = "Predictable";
     public static final boolean WEAPON = true;
     public static final int DAMAGE = 1;
@@ -31,6 +29,13 @@ public class Princess {
     public void setPosition(int position) {
         this.position = position;
     }
-    
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }   
     
 }

@@ -3,21 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package medievil;
+package medievil.Backend;
 
 /**
  *
  * @author zofia
  */
-public class Wizard {
+public class Knight {
     public static final String IMAGE_PATH = "";
-    public static final String POWER = "Magic Ball";
-    public static final int DAMAGE = 1;
+    public static final String POWER = "Strenght";
+    public static final String NAME = "Knight";
+    public static final int DAMAGE = 2;
     public static final int ATTACK_POSITION = 1;
-    public static final int DISTANCE = 4;
-    private int position;
+    public static final int DISTANCE = 2;
+    private int position; //Posicion en la que el jugador coloca dicho personaje de los 3 disponibles.
+    
 
-    public Wizard(int position) {
+    public Knight(int position) {
         setPosition(position);
     }
 

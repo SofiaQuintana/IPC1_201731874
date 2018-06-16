@@ -3,16 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package medievil;
-
-import java.awt.Image;
+package medievil.Backend;
 
 /**
  *
  * @author zofia
  */
-abstract class Character {
-    private Image image;
-    private String name;
+public class Medievil {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+    }
     
 }
