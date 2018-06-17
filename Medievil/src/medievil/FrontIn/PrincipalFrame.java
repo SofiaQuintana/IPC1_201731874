@@ -10,13 +10,17 @@ package medievil.FrontIn;
  * @author zofia
  */
 public class PrincipalFrame extends javax.swing.JFrame {
-    PlayersInfoDialog info;
+    private PlayersInfoDialog info;
+    private BoardFrame board;
     /**
      * Creates new form PrincipalFrame
      */
     public PrincipalFrame() {
         initComponents();
         info = new PlayersInfoDialog(this);
+        board = new BoardFrame();
+        
+        this.desktop.add(board);
     }
 
     /**
@@ -28,12 +32,24 @@ public class PrincipalFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        desktop = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         newGameItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
+        desktop.setLayout(desktopLayout);
+        desktopLayout.setHorizontalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 701, Short.MAX_VALUE)
+        );
+        desktopLayout.setVerticalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
 
         jMenu1.setText("Game");
 
@@ -56,11 +72,17 @@ public class PrincipalFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 713, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(desktop)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 412, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(desktop)
+                .addContainerGap())
         );
 
         pack();
@@ -69,9 +91,11 @@ public class PrincipalFrame extends javax.swing.JFrame {
     private void newGameItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameItemActionPerformed
         // TODO add your handling code here:
         info.setVisible(true);
+        board.setVisible(true);
     }//GEN-LAST:event_newGameItemActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane desktop;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

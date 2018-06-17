@@ -35,5 +35,4 @@ public class Character {
         return wizard;
     }
     
-    
 }

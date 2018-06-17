@@ -15,7 +15,7 @@ import medievil.Backend.Wizard;
 
 /**
  *
- * @author jose
+ * @author zofia
  */
 public class PlayersInfoDialog extends javax.swing.JDialog {
 	private Player[] players;
@@ -240,20 +240,20 @@ public class PlayersInfoDialog extends javax.swing.JDialog {
      private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
           if (nameText.getText().isEmpty() || name1Text.getText().isEmpty()) {
 			errorLabel.setVisible(true);
-          		} else {
-                                        try {
-                                                addValues();
-                                                validateSpinners();
-                                                character = new Character(new Princess(princessPosition), new Knight(knightPosition), new Wizard(wizardPosition));
-                                                character1 = new Character(new Princess(princess1Position), new Knight(knight1Position), new Wizard(wizard1Position));
-			players = new Player[2];
-			players[0] = new Player(nameText.getText(), character , 5, 1);
-			players[1] = new Player(name1Text.getText(), character1, 5, 2);
-			setVisible(false);
-                                        } catch(Exception e) {
-                                                JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                                        }
-		}
+            } else {
+                    try {
+                            addValues();
+                            validateSpinners();
+                            character = new Character(new Princess(princessPosition), new Knight(knightPosition), new Wizard(wizardPosition));
+                            character1 = new Character(new Princess(princess1Position), new Knight(knight1Position), new Wizard(wizard1Position));
+                            players = new Player[2];
+                            players[0] = new Player(nameText.getText(), character , 5, 1);
+                            players[1] = new Player(name1Text.getText(), character1, 5, 2);
+                            setVisible(false);
+                    } catch(Exception e) {
+                            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+        }
      }//GEN-LAST:event_saveButtonActionPerformed
 
      private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
