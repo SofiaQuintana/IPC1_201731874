@@ -7,12 +7,12 @@ package medievil.BackEnd;
 
 /**
  *
- * @author gamcas
+ * @author zofia
  */
 public class Player {
     
     private String name;
-    private  int vidas;
+    private  int lifes;
 
     public Player() {
     }
@@ -21,11 +21,11 @@ public class Player {
     
     public Player(String name) {
         this.name = name;
-        this.vidas=5;
+        this.lifes=5;
     }
 
     public int getVidas() {
-        return vidas;
+        return lifes;
     }
 
     public String getName() {
@@ -34,11 +34,11 @@ public class Player {
     
     
     public void addVidas(int vidas){
-        this.vidas+=vidas;
+        this.lifes+=vidas;
     }
     
     public void quitarVidas(int vidas){
-        this.vidas-=vidas;
+        this.lifes-=vidas;
     }
     
 }

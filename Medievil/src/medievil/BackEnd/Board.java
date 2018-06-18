@@ -67,7 +67,11 @@ public class Board {
         }
         fillBombs();
         fillHearts();
+        fillRandomNumbers();
+        rePaint();
+    }
 
+    public void fillRandomNumbers() {
         logicMatrix[random.nextInt(size)][random.nextInt(size)] = 3;
         wizard = new Characters();
 
@@ -88,9 +92,8 @@ public class Board {
 
         bomb = new Characters();
         heart = new Characters();
-        rePaint();
     }
-
+    
     public void getPosition() {
 
         for (int i = 0; i < size; i++) {

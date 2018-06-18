@@ -89,7 +89,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
 
     private void newGameItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameItemActionPerformed
         // TODO add your handling code here:
-        info.setVisible(true);
+//        info.setVisible(true);
         board.setVisible(true);
         
     }//GEN-LAST:event_newGameItemActionPerformed
