@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package medievil.Backend;
+package medievil;
 
+import medievil.FrontIn.BoardFrame;
 import medievil.FrontIn.PrincipalFrame;
 
 /**
@@ -18,8 +19,8 @@ public class Medievil {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        PrincipalFrame principal = new PrincipalFrame();
-        principal.setVisible(true);
+        PrincipalFrame principalFrame = new PrincipalFrame();
+        principalFrame.setVisible(true);
     }
     
 }

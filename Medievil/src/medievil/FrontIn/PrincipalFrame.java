@@ -20,7 +20,6 @@ public class PrincipalFrame extends javax.swing.JFrame {
         info = new PlayersInfoDialog(this);
         board = new BoardFrame();
         
-        this.desktop.add(board);
     }
 
     /**
@@ -92,6 +91,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         info.setVisible(true);
         board.setVisible(true);
+        
     }//GEN-LAST:event_newGameItemActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
