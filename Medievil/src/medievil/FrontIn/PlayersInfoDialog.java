@@ -7,7 +7,7 @@ package medievil.FrontIn;
 
 import javax.swing.JOptionPane;
 import medievil.Backend.Player;
-import medievil.Backend.Character;
+import medievil.Backend.Characters;
 import medievil.Backend.Knight;
 import medievil.Backend.Princess;
 import medievil.Backend.Wizard;
@@ -19,8 +19,8 @@ import medievil.Backend.Wizard;
  */
 public class PlayersInfoDialog extends javax.swing.JDialog {
 	private Player[] players;
-                private Character character;
-                private Character character1;
+                private Characters character;
+                private Characters character1;
                 private int wizardPosition;                    
                 private int wizard1Position;
                 private int knightPosition;
@@ -244,8 +244,8 @@ public class PlayersInfoDialog extends javax.swing.JDialog {
                     try {
                             addValues();
                             validateSpinners();
-                            character = new Character(new Princess(princessPosition), new Knight(knightPosition), new Wizard(wizardPosition));
-                            character1 = new Character(new Princess(princess1Position), new Knight(knight1Position), new Wizard(wizard1Position));
+                            character = new Characters(new Princess(princessPosition), new Knight(knightPosition), new Wizard(wizardPosition));
+                            character1 = new Characters(new Princess(princess1Position), new Knight(knight1Position), new Wizard(wizard1Position));
                             players = new Player[2];
                             players[0] = new Player(nameText.getText(), character , 5, 1);
                             players[1] = new Player(name1Text.getText(), character1, 5, 2);

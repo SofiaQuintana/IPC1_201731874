@@ -5,12 +5,16 @@
         <group>
             <file>file:/home/zofia/Prueba/Medievil/src/medievil/Backend/Princess.java</file>
             <file>file:/home/zofia/Prueba/Medievil/src/medievil/FrontIn/PrincipalSettings.java</file>
+            <file>file:/home/zofia/Prueba/Medievil/src/medievil/FrontIn/PrincipalFrame.java</file>
+            <file>file:/home/zofia/Prueba/Medievil/src/medievil/Backend/Movement.java</file>
             <file>file:/home/zofia/Prueba/Medievil/src/medievil/Backend/Medievil.java</file>
             <file>file:/home/zofia/Prueba/Medievil/src/medievil/Backend/Knight.java</file>
             <file>file:/home/zofia/Prueba/Medievil/src/medievil/Backend/Wizard.java</file>
-            <file>file:/home/zofia/Prueba/Medievil/src/medievil/Backend/Character.java</file>
+            <file>file:/home/zofia/Prueba/Medievil/src/medievil/FrontIn/BoardFrame.java</file>
             <file>file:/home/zofia/Prueba/Medievil/src/medievil/Backend/Player.java</file>
             <file>file:/home/zofia/Prueba/Medievil/src/medievil/Backend/Board.java</file>
+            <file>file:/home/zofia/Prueba/Medievil/src/medievil/Backend/Character.java</file>
+            <file>file:/home/zofia/Prueba/Medievil/src/medievil/FrontIn/PlayersInfoDialog.java</file>
         </group>
     </open-files>
 </project-private>

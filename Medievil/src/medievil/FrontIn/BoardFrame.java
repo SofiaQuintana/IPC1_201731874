@@ -92,7 +92,7 @@ public class BoardFrame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         panel.removeAll();
         panel.repaint();
-        board = new Board(Integer.valueOf(sizeField.getText()), panel);
+        board = new Board(Integer.parseInt(sizeField.getText()), panel);
         createdBoard = true;
     }//GEN-LAST:event_generateButtonActionPerformed
 

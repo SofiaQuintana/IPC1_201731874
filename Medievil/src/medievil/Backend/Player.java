@@ -11,11 +11,11 @@ package medievil.Backend;
  */
 public class Player {
     private String name;
-    private Character characters;
+    private Characters characters;
     private int lifesQuantity;
     private int playerNumber;
     
-    public Player(String name, Character characters, int lifesQuantity, int playerNumber) {
+    public Player(String name, Characters characters, int lifesQuantity, int playerNumber) {
         this.name = name;
         this.characters = characters;
         this.lifesQuantity = lifesQuantity;
@@ -30,11 +30,11 @@ public class Player {
         this.name = name;
     }
 
-    public Character getCharacters() {
+    public Characters getCharacters() {
         return characters;
     }
 
-    public void setCharacters(Character characters) {
+    public void setCharacters(Characters characters) {
         this.characters = characters;
     }
 

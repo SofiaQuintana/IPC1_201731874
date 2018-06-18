@@ -11,6 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 /**
  *
@@ -32,35 +33,58 @@ public class Board {
     private int sizeBlockY = 0;
 
     public Board(int size, JPanel background) {
-        this.size = size;
+        setSize(size);
         this.background = background;
-        initializeAndFill();
+        Board.this.initializeAndFill();
     }
 
     public Board() {
     }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
     
-    public void initializeAndFill() {
-        sizeBlockY = 600/size;
-        logicMatrix = new int[size][size];
+    public void initializeAndFill(int size) {
+        setSize(size);
+        sizeBlockY = 550/size;
         graphicMatrix = new JLabel[size][size];
-        
-        wizard = new Wizard();
-        wizardTwo = new Wizard();
-        //Recordar que hay que jalar la posicion cuando se llene de manera random;
-        knight = new Knight();
-        knightTwo = new Knight();
-        princessTwo = new Princess();
-        princess = new Princess();
+        logicMatrix = new int[size][size];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                logicMatrix[i][j] = 0;             
-            }            
+                graphicMatrix[i][j] = new JLabel();
+                Border border = BorderFactory.createLineBorder(Color.LIGHT_GRAY, 2, true);
+                graphicMatrix[i][j].setBorder(border);
+                background.add(graphicMatrix[i][j]);
+                logicMatrix[i][j] = 0;
+            }
         }
-        
-        fillCharacters();
-        rePaint();
     }
+//    public void initializeAndFill() {
+//        sizeBlockY = 550/size;
+//        logicMatrix = new int[size][size];
+//        graphicMatrix = new JLabel[size][size];
+//        
+//        wizard = new Wizard();
+//        wizardTwo = new Wizard();
+//        //Recordar que hay que jalar la posicion cuando se llene de manera random;
+//        knight = new Knight();
+//        knightTwo = new Knight();
+//        princessTwo = new Princess();
+//        princess = new Princess();
+//        for (int i = 0; i < size; i++) {
+//            for (int j = 0; j < size; j++) {
+//                logicMatrix[i][j] = 0;             
+//            }            
+//        }
+//        
+//        fillCharacters();
+//        rePaint();
+//    }
     
     public void fillCharacters() {
         logicMatrix[(int) (Math.random() * (size-1) + 0)][(int) (Math.random() * (size-1) + 0)] = Wizard.ID_WIZARD_1;
@@ -73,8 +97,10 @@ public class Board {
     
     public void rePaint() {
         JLabel spot = null;
+        
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
+                
                 switch(logicMatrix[i][j]) {
                     case 0:
                         spot = new JLabel();
@@ -112,9 +138,11 @@ public class Board {
                     default:
                     break;
                 }
+                
                 spot.setOpaque(false);
                 spot.setBorder(BorderFactory.createLineBorder(new Color(0,0,0)));
-                spot.setBounds(j * sizeBlockY,i*sizeBlockY,sizeBlockY,sizeBlockY);    
+                spot.setBounds(j * sizeBlockY,i*sizeBlockY,sizeBlockY,sizeBlockY);   
+                
                 graphicMatrix[i][j] = spot;
                 background.add(graphicMatrix[i][j], BorderLayout.CENTER);
                 background.repaint();
