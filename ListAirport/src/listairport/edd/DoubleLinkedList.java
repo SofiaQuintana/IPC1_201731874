@@ -5,6 +5,8 @@
  */
 package listairport.edd;
 
+import GUI.PrincipalFrame;
+import javax.swing.JTextArea;
 import listairport.dummyclasses.Airplane;
 
 /**
@@ -28,13 +30,24 @@ public class DoubleLinkedList extends List {
         return plane;
     }
     
+    public void recorrer() {
+       Node temporal = start;
+       if(temporal == null) {
+           System.out.println("La lista esta vacia.");
+       }
+       while(temporal != null) {
+           PrincipalFrame.addPassengers();
+           temporal.getData();
+           temporal = temporal.next;
+       }
+   }
+    
     @Override
     public void insertAtFront(Object data) {
-        if(start==null) {
-            start = new Node(data);
-            end = start;
+        if(isEmpty()) {
+            start = end = new Node(data);
         } else {
-            Node nuevo = new Node(data, null, start);
+            Node nuevo = new Node(data, null, start); //Resolviendo metodo showed by ingeniero Moises.
             start.setPrevious(nuevo);
             start = nuevo;
         }
@@ -49,6 +62,20 @@ public class DoubleLinkedList extends List {
             }
             plane.turnQuantity = plane.turnQuantity - 1;
         }
+    }
+    
+    public void printList(JTextArea terminal) {
+        for (int i = 0; i < getListSize(); i++) {
+            Airplane plane = (Airplane) obtainData(i, getListSize());
+            int number = i;
+            number = number + 1;
+            terminal.append("AIRPLANE " + number);
+            terminal.append("       TYPE: " + plane.getType() +"\n"
+                                     + "        PASSENGERS: " + plane.getPeopleQuantity() + "\n" 
+                                     + "        DESABORDAJE: " + plane.getTurnQuantity() + "\n"
+                                     + "        MAINTENANCE: " + plane.getMaintenanceTurns() + "\n");
+        }
+        
     }
     
 }

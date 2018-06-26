@@ -14,8 +14,7 @@ public class List {
 
     public List() {
         start = null;
-        end = null;
-        
+        end = null;   
     }
  
     public boolean isEmpty() {
@@ -85,16 +84,13 @@ public class List {
    }
    
    public Object obtainData(int index, int listSize) {
-        index = listSize - (index-1);
+        index = listSize - index-1;
         Node temp = start;
 
         for(int iterator = 0; iterator < index; iterator++) {
             temp = temp.getNext();           
-        }
-        
-        Object data = temp.getData();
-        
-        return data;
+        }        
+        return temp.getData();
     }      	
    
    public void eliminateSpecifiedData(int index, int listSize) {

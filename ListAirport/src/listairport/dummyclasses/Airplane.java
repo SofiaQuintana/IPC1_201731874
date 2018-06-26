@@ -13,29 +13,28 @@ import java.util.Random;
  */
 public class Airplane {
     private Random random = new Random();
-    private String type;
+    public String type;
     private int peopleQuantity;
     public int turnQuantity;
-    private int maintenanceTurns;
+    public int maintenanceTurns;
     private int auxiliar;
     private static final String  SIZE_SMALL = "Small";
     private static final String SIZE_MEDIUM = "Medium";
     private static final String SIZE_LARGE = "Large";
     
     public Airplane() {
-        auxiliar = (int) (random.nextInt()*3 + 1);
         setType();
         setPeopleQuantity();
         setTurnQuantity();
         setMaintenanceTurns();
     }
 
-    
     public String getType() {
         return type;
     }
 
     public void setType() {
+        auxiliar = (int) ((Math.random() *3) + 1);
             switch(auxiliar) {
             case 1: 
                 this.type = SIZE_SMALL;
@@ -51,15 +50,16 @@ public class Airplane {
     }
 
     public void setPeopleQuantity() {
-        switch(this.type) {
+        
+        switch(getType()) {
             case "Small" :
-                int aux = (int) (random.nextInt()*10 + 5);
+                int aux = (int) ((Math.random()*6) + 5);
                 this.peopleQuantity = aux;
             case "Medium":
-                aux = (int) (random.nextInt()*25 + 15);
+                aux = (int) ((Math.random()*11) + 15);
                 this.peopleQuantity = aux;
             case "Large":
-                aux = (int) (random.nextInt()*40 + 30);
+                aux = (int) ((Math.random()*11) + 30);
                 this.peopleQuantity = aux;
         }
     }
@@ -89,15 +89,15 @@ public class Airplane {
     public void setMaintenanceTurns() {
         switch(this.type) {
             case "Small":
-                int aux = (int) (random.nextInt()*3 + 1);
+                int aux = (int) (Math.random()*2 + 1);
                 this.maintenanceTurns = aux;
             break;
             case "Medium":
-                aux = (int) (random.nextInt()*4 + 2);
+                aux = (int) (Math.random()*3 + 2);
                 this.maintenanceTurns = aux;
             break;
             case "Large":
-                aux = (int) (random.nextInt()*6 + 3);
+                aux = (int) (Math.random()*4 + 3);
                 this.maintenanceTurns = aux;
             break;
         }
