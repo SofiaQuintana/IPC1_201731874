@@ -22,6 +22,13 @@ public class Node {
     public Node(Object data) {
         setData(data);
         setNext(null);
+        setPrevious(null);
+    }
+    
+    public Node(Object data, Node previous, Node next) {
+        setNext(next);
+        setPrevious(previous);
+        setData(data);
     }
 
     public Object getData() {

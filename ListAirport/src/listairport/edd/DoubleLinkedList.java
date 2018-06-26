@@ -11,21 +11,44 @@ import listairport.dummyclasses.Airplane;
  *
  * @author zofia
  */
-public class DoubleLinkedList {
-    private Node first;
+public class DoubleLinkedList extends List {
+    private int listSize = 0;    
+
+    public int getListSize() {
+        return listSize;
+    }
     
-    public void insertAtEnding(int dpi, String nombre){
-        Airplane plane = new Airplane(dpi, dpi, dpi, dpi).
-        Node nuevo=new NodoPersona(dpi,nombre);
-        if(primero==null){
-            primero=nuevo;
-        }else{
-            NodoPersona aux=primero;
-            while(aux.sig!=null){
-                aux=aux.sig;
+    public void addAirplane() {
+        Airplane plane = new Airplane();
+        insertAtFront(plane);
+    }
+    
+    public Airplane obtainAirplane(int index) {
+        Airplane plane = (Airplane) obtainData(index, listSize);
+        return plane;
+    }
+    
+    @Override
+    public void insertAtFront(Object data) {
+        if(start==null) {
+            start = new Node(data);
+            end = start;
+        } else {
+            Node nuevo = new Node(data, null, start);
+            start.setPrevious(nuevo);
+            start = nuevo;
+        }
+            listSize++; //Realizamos este sumador con el objetivo de saber cuantos nodos tiene la lista.
+    }
+    
+    public void decreace() {
+        for (int i = 0; i < getListSize(); i++) {
+            Airplane plane = (Airplane) obtainData(i, listSize);
+            if(plane.getTurnQuantity() <= 0) {
+                eliminateSpecifiedData(i, listSize);
             }
-            aux.sig=nuevo;
-            nuevo.ant=aux;
+            plane.turnQuantity = plane.turnQuantity - 1;
         }
     }
+    
 }
