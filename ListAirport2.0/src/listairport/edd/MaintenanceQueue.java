@@ -32,14 +32,13 @@ public class MaintenanceQueue {
         if (startQueue() == null) {
             return;
         }
-        maintenanceList.addAviones((Airplane) startQueue());
-        if (maintenanceList.getEstado()) {
+        maintenanceList.addPlanes((Airplane) startQueue());
+        if (maintenanceList.isState()) {
             eliminate();
         }
     }
 
     public void insert(Object data) {
-
         if (isEmpty()) {
             start = new Node(data);
             ending = start;

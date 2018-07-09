@@ -14,104 +14,99 @@ import listairport.dummyclasses.Maintenance;
  * @author zofia
  */
 public class MaintenanceList {
-    public Node inicio;
-    public Node fin;
+    public Node start;
+    public Node ending;
     public int size;
-    private boolean estado;
+    private boolean state; //AYUDA A DETERMINAR SI LA ESTACION ESTA OCUPADA O LIBRE.
 
     public MaintenanceList() {
-
-        inicio=null;
-        fin=null;
+        start=null;
+        ending=null;
         size=0;
-
     }
     
-    public void addAviones(Airplane avion) {
+    public void addPlanes(Airplane plane) {
         for (int i = 0; i < getSize(); i++) {
-            estado = false;
-            Maintenance mantenimiento = (Maintenance) getElemento(i);
-            if (mantenimiento.isState()) {
-                mantenimiento.setState(false);
-                mantenimiento.setAirplane(avion);
-                estado = true;
+            state = false;
+            Maintenance maintenance = (Maintenance) getData(i);
+            if (maintenance.isState()) {
+                maintenance.setState(false);
+                maintenance.setAirplane(plane);
+                state = true;
                 return;
             } else {
-                estado = false;
+                state = false;
             }
         }
     }
 
-    public void iniciarLista() {
-        Maintenance nuevo = new Maintenance(true, null);
-        insertarInicio(nuevo);
+    public void initializeList() {
+        Maintenance maintenance = new Maintenance(true, null);
+        insertAtFront(maintenance);
     }
 
-    public void bajarTurno() {
+    public void decreaseTurn() {
         for (int i = 0; i < getSize(); i++) {
-            Maintenance mantenimiento = (Maintenance) getElemento(i);
-            if (mantenimiento.getAirplane() != null) {
-                mantenimiento.getAirplane().setMaintenanceTurn(mantenimiento.getAirplane().getMaintenanceTurn() - 1);
+            Maintenance maintenance = (Maintenance) getData(i);
+            if (maintenance.getAirplane() != null) {
+                maintenance.getAirplane().setMaintenanceTurn(maintenance.getAirplane().getMaintenanceTurn() - 1);
             }
         }
     }
 
-    public void terminaMantenimiento() {
+    public void finishMaintenance() {
         for (int i = 0; i < getSize(); i++) {
-            Maintenance mantenimiento = (Maintenance) getElemento(i);
-            if (mantenimiento.getAirplane() != null) {
-                if (mantenimiento.getAirplane().getMaintenanceTurn() <= 0) {
-                    mantenimiento.setAirplane(null);
-                    mantenimiento.setState(true);
+            Maintenance maintenance = (Maintenance) getData(i);
+            if (maintenance.getAirplane() != null) {
+                if (maintenance.getAirplane().getMaintenanceTurn() <= 0) {
+                    maintenance.setAirplane(null);
+                    maintenance.setState(true);
                 }
             }
         }
     }
 
-    public void insertarInicio(Object objeto) {
-        Node nodo = new Node(objeto, inicio);
-        inicio = nodo;
-        if (fin == null) {
-            fin = inicio;
+    public void insertAtFront(Object data) {
+        Node nodo = new Node(data, start);
+        start = nodo;
+        if (ending == null) {
+            ending = start;
         }
         size++;
     }
 
-    public Object getElemento(int indice) {
-        
-        indice = size - indice - 1;
-        int cont = 0;
-        
-        Node aux = inicio;
-
-        while (cont < indice) {
-            aux = aux.getNext();
-            cont++;
+    public Object getData(int index) {
+        index = size - index - 1;
+        int iterator = 0;
+        Node auxiliar = start;
+        while (iterator < index) {
+            auxiliar = auxiliar.getNext();
+            iterator++;
         }
-        return aux.getData();
+        return auxiliar.getData();
     }
 
-    public boolean estaVacia() {
-        return inicio == null;
+    public boolean isEmpty() {
+        return start == null;
     }
     
     public int getSize() {
         return size;
     }
 
-    public boolean getEstado() {
-        return estado;
+    public boolean isState() {
+        return state;
     }
   
-    public void recorrerMantenimiento(JTextArea consola) {
+    public void printMaintenance(JTextArea terminal) {
         for (int i = 0; i < getSize(); i++) {
-            Maintenance mantenimiento = (Maintenance) getElemento(i);
-            if (mantenimiento.getAirplane() == null) {
-                consola.append("\nESTACION " + (i + 1));
-                consola.append("\n	ESTADO: " + mantenimiento.isAvailable() + "\n");
+            Maintenance maintenance = (Maintenance) getData(i);
+            if (maintenance.getAirplane() == null) {
+                terminal.append("\n STATION " + (i + 1));
+                terminal.append("\n	STATE: " + maintenance.isAvailable() + "\n");
             } else {
-                consola.append("\nESTACION " + (i + 1));
-                consola.append("\n	ESTADO: " + mantenimiento.isAvailable() + mantenimiento.getAirplane());
+                terminal.append("\n STATION " + (i + 1));
+                terminal.append("\n	STATE: " + maintenance.isAvailable() + maintenance.getAirplane());
             }
         }
     }

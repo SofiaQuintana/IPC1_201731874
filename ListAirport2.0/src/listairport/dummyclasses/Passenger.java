@@ -10,41 +10,53 @@ package listairport.dummyclasses;
  * @author zofia
  */
 public class Passenger {
-     private int bags, documents, correlative;
 
-    public Passenger(int correlative, int bags, int documents) {
-        this.correlative = correlative;
-        this.bags = bags;
-        this.documents = documents;
+    private int bags;
+    private int correlative;
+    private int documents;
+    private int registerTurns;
+    
+    public Passenger(int correlative, int bags, int documents, int registerTurns) {
+        setCorrelative(correlative);
+        setBags(bags);
+        setDocuments(documents);
+        setRegisterTurns(registerTurns);
     }
 
-    public int getMaletas() {
+    public int getBags() {
         return bags;
     }
 
-    public void setMaletas(int maletas) {
-        this.bags = maletas;
+    public void setBags(int bags) {
+        this.bags = bags;
     }
 
-    public int getNumero() {
+    public int getCorrelative() {
         return correlative;
     }
 
-    public void setNumero(int numero) {
-        this.correlative = numero;
+    public void setCorrelative(int correlative) {
+        this.correlative = correlative;
     }
 
-    public int getDocumentos() {
+    public int getDocuments() {
         return documents;
     }
 
-    public void setDocumentos(int documentos) {
-        this.documents = documentos;
+    public void setDocuments(int documents) {
+        this.documents = documents;
     }
-    
-  
+
+    public int getRegisterTurns() {
+        return registerTurns;
+    }
+
+    public void setRegisterTurns(int registerTurns) {
+        this.registerTurns = registerTurns;
+    }
+
     public String toString() {
-        return " " + getNumero();
+        return " " + getCorrelative();
     }
 
 }

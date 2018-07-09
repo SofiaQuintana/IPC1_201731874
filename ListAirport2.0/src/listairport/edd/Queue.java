@@ -12,20 +12,19 @@ import listairport.dummyclasses.Passenger;
  *
  * @author zofia
  */
-public class PassengersQueue {
+public class Queue {
     public Node start;
     public Node ending;
     private int size;
 
-    public PassengersQueue() {
+    public Queue() {
         start = null;
         ending = null;
         size = 0;
     }
-
-    public void setPassenger(int correlative, int bags, int documents, int registerTurns) {
-        Passenger pasajero = new Passenger(correlative, bags, documents, registerTurns);
-        insertData(pasajero);
+    
+    public void setPassenger(Passenger passenger) {
+        insertData(passenger);
     }
 
     public int getBags() {

@@ -6,13 +6,7 @@
 package listairport.frontIn;
 
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 import listairport.backend.GeneralController;
-import listairport.edd.MaintenanceQueue;
-import listairport.edd.PassengersQueue;
-import listairport.edd.AirplaneList;
-import listairport.edd.BagList;
-import listairport.edd.MaintenanceList;
 
 /**
  *
@@ -46,6 +40,10 @@ public class PrincipalFrame extends javax.swing.JFrame {
         terminalField = new javax.swing.JTextField();
         startButton = new javax.swing.JButton();
         turnButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        terminal1 = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        terminal2 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ListAirport");
@@ -81,6 +79,20 @@ public class PrincipalFrame extends javax.swing.JFrame {
             }
         });
 
+        terminal1.setBackground(new java.awt.Color(0, 0, 0));
+        terminal1.setColumns(20);
+        terminal1.setFont(new java.awt.Font("Lucida Bright", 0, 14)); // NOI18N
+        terminal1.setForeground(new java.awt.Color(102, 153, 255));
+        terminal1.setRows(5);
+        jScrollPane2.setViewportView(terminal1);
+
+        terminal2.setBackground(new java.awt.Color(0, 0, 0));
+        terminal2.setColumns(20);
+        terminal2.setFont(new java.awt.Font("Lucida Bright", 0, 14)); // NOI18N
+        terminal2.setForeground(new java.awt.Color(102, 153, 255));
+        terminal2.setRows(5);
+        jScrollPane3.setViewportView(terminal2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,40 +101,51 @@ public class PrincipalFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(planeField, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(terminalField, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(startButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(turnButton))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(planeField, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(terminalField, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(145, 145, 145)
-                .addComponent(startButton)
-                .addGap(85, 85, 85)
-                .addComponent(turnButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(planeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(terminalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(turnButton)
-                    .addComponent(startButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(planeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(startButton)
+                    .addComponent(turnButton))
+                .addContainerGap())
         );
 
         pack();
@@ -130,7 +153,12 @@ public class PrincipalFrame extends javax.swing.JFrame {
 
     private void turnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnButtonActionPerformed
         // TODO add your handling code here:
-        controller.turnAction(terminal);
+        try {
+            controller.turnAction(terminal);
+            controller.validateEmptyness();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "INFO", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_turnButtonActionPerformed
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
@@ -141,6 +169,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
             controller.initializeComponents(planeField, terminalField, terminal);
             startButton.setEnabled(false);
             turnButton.setEnabled(true);
+            cleanFields();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR",
                     JOptionPane.ERROR_MESSAGE);
@@ -154,14 +183,22 @@ public class PrincipalFrame extends javax.swing.JFrame {
         }
     }
 
+    public void cleanFields() {
+        planeField.setText("");
+        terminalField.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField planeField;
     private javax.swing.JButton startButton;
     private javax.swing.JTextArea terminal;
+    private javax.swing.JTextArea terminal1;
+    private javax.swing.JTextArea terminal2;
     private javax.swing.JTextField terminalField;
     private javax.swing.JButton turnButton;
     // End of variables declaration//GEN-END:variables

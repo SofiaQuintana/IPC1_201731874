@@ -10,7 +10,8 @@ package listairport.dummyclasses;
  * @author zofia
  */
 public class Maintenance {
-       private boolean state;
+
+    private boolean state;
     private Airplane airplane;
 
     public Maintenance(boolean state, Airplane plane) {
@@ -36,9 +37,9 @@ public class Maintenance {
 
     public String isAvailable() {
         if (isState()) {
-            return "Disponible";
+            return "Available";
         } else {
-            return "Ocupado";
+            return "Busy";
         }
     }
 

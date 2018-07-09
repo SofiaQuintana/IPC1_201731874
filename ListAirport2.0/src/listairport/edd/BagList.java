@@ -12,90 +12,88 @@ import javax.swing.JTextArea;
  * @author zofia
  */
 public class BagList {
-
-    public Node inicio;
-    public Node fin;
+    public Node start;
+    public Node ending;
     private int size;
 
     public BagList() {
-        inicio = null;
-        fin = null;
+        start = null;
+        ending = null;
         size = 0;
     }
 
-    public void setMaleta(int numero) {
-        ingresar(numero);
+    public void setBag(int correlative) {
+        insertData(correlative);
     }
 
-    public void eliminarMaleta(int cantidad) {
-        while (cantidad != 0) {
-            eliminar(1);
-            cantidad--;
+    public void deleteBag(int quantity) {
+        while (quantity != 0) {
+            delete(1);
+            quantity--;
         }
     }
 
-    public void ingresar(Object objeto) {
-        Node nuevo = new Node(objeto);
-
-        if (inicio == null) {
-            inicio = nuevo;
-            inicio.next = inicio;
-            nuevo.previous = fin;
-            fin = nuevo;
+    public void insertData(Object data) {
+        Node auxiliar = new Node(data);
+        if (start == null) {
+            start = auxiliar;
+            start.next = start;
+            auxiliar.previous = ending;
+            ending = auxiliar;
         } else {
-            fin.next = nuevo;
-            nuevo.next = inicio;
-            nuevo.previous = fin;
-            fin = nuevo;
-            inicio.previous = fin;
+            ending.next = auxiliar;
+            auxiliar.next = start;
+            auxiliar.previous = ending;
+            ending = auxiliar;
+            start.previous = ending;
         }
     }
 
-    public void eliminar(int maleta) {
-        if (inicio != null) {
-            if (maleta > 0) {
-                int cont = 1;
-                Node aux = inicio;
-                while ((aux.getNext() != inicio) && (cont < maleta)) {
-                    cont++;
-                    aux = aux.getNext();
+    public void delete(int quantity) {
+        if (start != null) {
+            if (quantity > 0) {
+                int iterator = 1;
+                Node auxiliar = start;
+                while ((auxiliar.getNext() != start) && (iterator < quantity)) {
+                    iterator++;
+                    auxiliar = auxiliar.getNext();
                 }
-                if (cont == 1) {
-                    if (aux.getNext() == inicio) {
-                        inicio = null;
+                if (iterator == 1) {
+                    if (auxiliar.getNext() == start) {
+                        start = null;
                     } else {
-                        Node ant = aux.getPrevious();
-                        ant.setNext(aux.getNext());
-                        aux = aux.getNext();
-                        aux.setPrevious(ant);
-                        inicio = aux;
+                        Node ant = auxiliar.getPrevious();
+                        ant.setNext(auxiliar.getNext());
+                        auxiliar = auxiliar.getNext();
+                        auxiliar.setPrevious(ant);
+                        start = auxiliar;
                     }
                 } else {
-                    Node ant = aux.getPrevious();
-                    aux.setPrevious(null);
-                    ant.setNext(aux.getNext());
-                    aux = aux.getNext();
-                    aux.setPrevious(ant);
+                    Node ant = auxiliar.getPrevious();
+                    auxiliar.setPrevious(null);
+                    ant.setNext(auxiliar.getNext());
+                    auxiliar = auxiliar.getNext();
+                    auxiliar.setPrevious(ant);
                 }
             }
         }
     }
 
-    public boolean estaVacia() {
-        return inicio == null;
+    public boolean isEmpty() {
+        return start == null;
     }
 
     public int getSize() {
         return size;
     }
 
-    public void recorrerMaletas(JTextArea consola) {
-        Node aux = inicio;
-        if (inicio != null) {
+    public void printBags(JTextArea terminal) {
+        Node auxiliar = start;
+        if (start != null) {
             do {
-                consola.append("\nMALETA: " + aux.getData());
-                aux = aux.next;
-            } while (aux != inicio);
+                terminal.append("\nBAG: " + auxiliar.getData());
+                auxiliar = auxiliar.next;
+            } while (auxiliar != start);
         }
     }
 }

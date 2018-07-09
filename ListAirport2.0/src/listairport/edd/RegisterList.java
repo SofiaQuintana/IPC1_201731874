@@ -5,33 +5,33 @@
  */
 package listairport.edd;
 
-import javax.swing.JTextArea;
-import listairport.dummyclasses.Airplane;
+import listairport.dummyclasses.Register;
 
 /**
  *
  * @author zofia
  */
-public class AirplaneList {
+public class RegisterList {
+
     public Node start;
     public Node ending;
     private int size;
 
-    public AirplaneList() {
+    public RegisterList() {
         start = null;
         ending = null;
         size = 0;
     }
 
-    public void setPlane(int number, String type, int passengers, int desabordajeTurns,
+    public void setRegister(String correlative, int passengers, int desabordajeTurns,
             int maintenanceTurns) {
-        Airplane plane = new Airplane(number, type, passengers, desabordajeTurns, maintenanceTurns);
+//        Airplane plane = new Airplane(number, type, passengers, desabordajeTurns, maintenanceTurns);
         insertAtFront(plane);
     }
 
-    public Airplane getPlane(int index) {
-        Airplane plane = (Airplane) getData(index);
-        return plane;
+    public Register getRegister(int index) {
+        Register desk = (Register) getData(index);
+        return desk;
     }
 
     public void decreaseTurn() {
