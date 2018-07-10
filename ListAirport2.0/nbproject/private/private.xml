@@ -3,12 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/zofia/NetBeansProjects/ListAirport2.0/src/listairport/backend/GeneralController.java</file>
-            <file>file:/home/zofia/NetBeansProjects/ListAirport2.0/src/listairport/frontIn/PrincipalFrame.java</file>
-            <file>file:/home/zofia/NetBeansProjects/ListAirport2.0/src/listairport/edd/BagList.java</file>
-            <file>file:/home/zofia/NetBeansProjects/ListAirport2.0/src/listairport/edd/PassengersQueue.java</file>
             <file>file:/home/zofia/NetBeansProjects/ListAirport2.0/src/listairport/edd/AirplaneList.java</file>
-            <file>file:/home/zofia/NetBeansProjects/ListAirport2.0/src/listairport/dummyclasses/Airplane.java</file>
+            <file>file:/home/zofia/NetBeansProjects/ListAirport2.0/src/listairport/backend/GeneralController.java</file>
+            <file>file:/home/zofia/NetBeansProjects/ListAirport2.0/src/listairport/edd/MaintenanceQueue.java</file>
+            <file>file:/home/zofia/NetBeansProjects/ListAirport2.0/src/listairport/edd/RegisterList.java</file>
+            <file>file:/home/zofia/NetBeansProjects/ListAirport2.0/src/listairport/edd/MaintenanceList.java</file>
+            <file>file:/home/zofia/NetBeansProjects/ListAirport2.0/src/listairport/frontIn/PrincipalFrame.java</file>
+            <file>file:/home/zofia/NetBeansProjects/ListAirport2.0/src/listairport/backend/Graphics.java</file>
+            <file>file:/home/zofia/NetBeansProjects/ListAirport2.0/src/listairport/dummyclasses/Passenger.java</file>
+            <file>file:/home/zofia/NetBeansProjects/ListAirport2.0/src/listairport/dummyclasses/Register.java</file>
+            <file>file:/home/zofia/NetBeansProjects/ListAirport2.0/src/listairport/edd/DocumentStack.java</file>
+            <file>file:/home/zofia/NetBeansProjects/ListAirport2.0/src/listairport/edd/PassengersQueue.java</file>
         </group>
     </open-files>
 </project-private>

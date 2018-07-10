@@ -5,6 +5,7 @@
  */
 package listairport.edd;
 
+import javax.swing.JTextArea;
 import listairport.dummyclasses.Register;
 
 /**
@@ -23,32 +24,14 @@ public class RegisterList {
         size = 0;
     }
 
-    public void setRegister(String correlative, int passengers, int desabordajeTurns,
-            int maintenanceTurns) {
-//        Airplane plane = new Airplane(number, type, passengers, desabordajeTurns, maintenanceTurns);
-        insertAtFront(plane);
+    public void setRegister(char correlative, PassengersQueue queue, DocumentStack stack) {
+        Register register = new Register(correlative, queue, stack);
+        insertAtFront(register);
     }
 
     public Register getRegister(int index) {
         Register desk = (Register) getData(index);
         return desk;
-    }
-
-    public void decreaseTurn() {
-        for (int i = 0; i < getSize(); i++) {
-            Airplane plane = (Airplane) getData(i);
-            plane.setDesabordajeTurn(plane.getDesabordajeTurn() - 1);
-        }
-    }
-
-    public void eliminatePlane(MaintenanceQueue maintenanceQueue) {
-        for (int i = 0; i < getSize(); i++) {
-            Airplane plane = (Airplane) getData(i);
-            if (plane.getDesabordajeTurn() <= 0) {
-                eliminateDate(i);
-                maintenanceQueue.setPlane(plane);
-            }
-        }
     }
 
     public void insertAtFront(Object data) {
@@ -88,22 +71,6 @@ public class RegisterList {
         return auxiliar.getData();
     }
 
-    public void eliminateDate(int index) {
-        index = size - index - 1;
-        if (index == 0) {
-            start = start.getNext();
-        } else {
-            int iterator = 0;
-            Node auxiliar = start;
-            while (iterator < index - 1) {
-                auxiliar = auxiliar.getNext();
-                iterator++;
-            }
-            auxiliar.setNext(auxiliar.getNext());
-        }
-        size--;
-    }
-
     public boolean isEmpty() {
         return start == null;
     }
@@ -112,17 +79,12 @@ public class RegisterList {
         return size;
     }
 
-    public void printPlanes(JTextArea terminal) {
+    public void printDesk(JTextArea terminal) {
         for (int i = 0; i < getSize(); i++) {
-            Airplane avion = (Airplane) getData(i);
-            terminal.append("\n PLANE: " + avion.getCorrelative() + "\n");
-            terminal.append("	TYPE: "
-                    + avion.getType()
-                    + "\n 	PASSENGERS: "
-                    + avion.getPassengers()
-                    + "\n    DESABORDAJE TURNS: "
-                    + avion.getDesabordajeTurn() + "\n 	MAINTENANCE TURNS: "
-                    + avion.getMaintenanceTurn() + "\n");
+            Register desk = (Register) getData(i);
+            terminal.append("\n DESK" + desk.getCorrelative() + "\n");
+            desk.getQueue().printPassengers(terminal);
+            desk.getStack().printDocuments(terminal);
         }
     }
 }

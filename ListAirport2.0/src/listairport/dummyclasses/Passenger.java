@@ -56,7 +56,7 @@ public class Passenger {
     }
 
     public String toString() {
-        return " " + getCorrelative();
+        return "Passenger: " + getCorrelative();
     }
 
 }

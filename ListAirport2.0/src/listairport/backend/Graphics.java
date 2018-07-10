@@ -18,7 +18,7 @@ import listairport.edd.Node;
  */
 public class Graphics {
     
-    public void createDotFile(Node node, String name) {
+    public void createDotFileDoubleList(Node node, String name) {
         FileWriter writer = null;
         PrintWriter printer;
         
@@ -26,7 +26,7 @@ public class Graphics {
             writer = new FileWriter(name + ".dot");
             printer = new PrintWriter(writer);
             printer.println("digraph listadoble {");
-            printer.println(generateDotFile(node));
+            printer.println(generateDotFileDoubleList(node));
             printer.println("}");
             printer.close();
         } catch(IOException ex) {
@@ -40,7 +40,29 @@ public class Graphics {
         }
     }
     
-    public String generateDotFile(Node node) {
+    public void createDotFileList(Node node, String name) {
+        FileWriter writer = null;
+        PrintWriter printer;
+        
+        try {
+            writer = new FileWriter(name + ".dot");
+            printer = new PrintWriter(writer);
+            printer.println("digraph listasimple {");
+            printer.println(generateDotFileList(node));
+            printer.println("}");
+            printer.close();
+        } catch(IOException ex) {
+            System.out.println(ex.getMessage());
+        } finally  {
+            try {
+                writer.close();
+            } catch(IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+    }
+    
+    public String generateDotFileDoubleList(Node node) {
         String string = " ";
         
         if(node == null) {
@@ -57,12 +79,31 @@ public class Graphics {
             string += "Node" + replace(node.next.hashCode())
                             + "->" + "Node" 
                             + replace(node.next.previous.hashCode()) + ";\n";
-            string += generateDotFile(node.next);
+            string += generateDotFileDoubleList(node.next);
         }
         
         return string;
     }
     
+    public String generateDotFileList(Node node) {
+        String string = " ";
+        
+        if(node == null) {
+            return string;
+        }
+        
+        string += "Node" + replace(node.hashCode()) + "[label=\""
+                + node.getData() + "\"];\n";
+        if(node.next != null) {
+            string += "Node" +
+                            replace(node.hashCode())
+                            + "->" + "Node"
+                            + replace(node.next.hashCode()) + ";\n";
+            string += generateDotFileList(node.next);
+        }     
+        return string;
+    }
+
     public String replace(int memoryPosition) {
         String string = String.valueOf(memoryPosition);
         return string.replace("-", "_");

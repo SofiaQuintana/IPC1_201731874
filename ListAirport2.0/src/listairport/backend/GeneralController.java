@@ -9,9 +9,11 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import listairport.edd.AirplaneList;
 import listairport.edd.BagList;
+import listairport.edd.DocumentStack;
 import listairport.edd.MaintenanceList;
 import listairport.edd.MaintenanceQueue;
 import listairport.edd.PassengersQueue;
+import listairport.edd.RegisterList;
 
 /**
  *
@@ -21,6 +23,9 @@ public class GeneralController {
 
     private AirplaneList planesList;
     private PassengersQueue passengersQueue;
+    private PassengersQueue secondPassengerQueue;
+    private DocumentStack stack;
+    private RegisterList registerList;
     private BagList bagsList;
     private MaintenanceQueue maintenanceQueue;
     private MaintenanceList maintenanceList;
@@ -38,9 +43,13 @@ public class GeneralController {
     private int registerTurn;
     private int bagsIterator;
     private int bagNumber = 1;
+    private int registerQuantity;
     private String type;
     private boolean initialized = false;
-
+    private char[] abecedario = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
+        'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+    private char correlative = ' ';
+    
     public void planesDataGenerator() {
         int planeType = (int) (Math.random() * 3 + 1);
         switch (planeType) {
@@ -120,10 +129,16 @@ public class GeneralController {
 
     public void generateImages() {
         //Generador de imagenes para aviones.
-        graphics.createDotFile(planesList.start, "Planes");
+        graphics.createDotFileDoubleList(planesList.start, "Planes");
         graphics.generateImage("Planes.dot", "planes.png");
         //Generador de imagenes para pasajeros.
         
+
+    }
+    
+    public void generateImagePassengers() {
+        graphics.createDotFileList(passengersQueue.start, "Passengers");
+        graphics.generateImage("Passengers.dot", "passenger.png");
     }
     
     public void printTerminal(JTextArea terminal, int turns) {
@@ -134,6 +149,9 @@ public class GeneralController {
         terminal.append("\n ----------- PASSENGERS -----------\n");
         passengersQueue.printPassengers(terminal);
 
+        terminal.append("\n ----------- REGISTER -----------\n");
+        registerList.printDesk(terminal);
+        
         terminal.append("\n --------- BAGS ---------\n");
         bagsList.printBags(terminal);
 
@@ -156,20 +174,23 @@ public class GeneralController {
         }
         if (!initialized) {
             addPlanes();
+            initializeRegister();
             turns++;
             printTerminal(terminal, turns);
             initialized = true;
             generateImages();
+            generateImagePassengers();
             return;
         }
         eliminatePassengers();
         addPlanes();
         turns++;
         generateImages();
+        generateImagePassengers();
         printTerminal(terminal, turns);
     }
 
-    public void initializeComponents(JTextField planeField, JTextField terminalField, JTextArea terminal) {
+    public void initializeComponents(JTextField planeField, JTextField terminalField, JTextField registerField, JTextArea terminal) {
         turns = 0;
         number = 1;
         iterator = 0;
@@ -179,9 +200,11 @@ public class GeneralController {
         bagsList = new BagList();
         maintenanceList = new MaintenanceList();
         maintenanceQueue = new MaintenanceQueue();
+        registerList = new RegisterList();
         graphics = new Graphics();
         planesQuantity = Integer.parseInt(planeField.getText());
         stationsQuantity = Integer.parseInt(terminalField.getText());
+        registerQuantity = Integer.parseInt(registerField.getText());
         addStations();
         printTerminal(terminal, turns);
     }
@@ -190,6 +213,15 @@ public class GeneralController {
         if(passengersQueue.isEmpty() && bagsList.isEmpty() && planesList.isEmpty() 
                 && maintenanceQueue.isEmpty()) {
             throw new Exception("Simulacion Finalizada");
+        }
+    }
+    
+    public void initializeRegister() {
+        for (int i = 0; i < registerQuantity; i++) {
+            secondPassengerQueue = new PassengersQueue();
+            stack = new DocumentStack();
+            correlative = abecedario[i];
+            registerList.setRegister(correlative, secondPassengerQueue, stack);
         }
     }
 }
