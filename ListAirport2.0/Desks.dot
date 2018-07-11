@@ -1,0 +1,7 @@
+digraph listadesk {
+Node298667240[label="Desk: B&#92;nState: Busy&#92;nPassenger: 2&#92;nTurns: 2"];
+Node298667240->Node1040295307;
+Node1040295307->Node298667240;
+Node1040295307[label="Desk: A&#92;nState: Busy&#92;nPassenger: 9&#92;nTurns: 3"];
+
+}

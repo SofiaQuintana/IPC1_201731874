@@ -15,12 +15,16 @@ import listairport.edd.PassengersQueue;
 public class Register {
     private char correlative;
     private PassengersQueue queue;
+    private Passenger passenger;
     private DocumentStack stack;
+    private boolean state;
     
-    public Register(char correlative, PassengersQueue queue, DocumentStack stack) {
+    public Register(char correlative, PassengersQueue queue, DocumentStack stack, Passenger passenger, boolean state) {
         setCorrelative(correlative);
         setQueue(queue);
         setStack(stack);
+        setPassenger(passenger);
+        setState(state);
     }
 
     public char getCorrelative() {
@@ -29,6 +33,22 @@ public class Register {
 
     public void setCorrelative(char correlative) {
         this.correlative = correlative;
+    }
+
+    public Passenger getPassenger() {
+        return passenger;
+    }
+
+    public void setPassenger(Passenger passenger) {
+        this.passenger = passenger;
+    }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
     }
 
     public PassengersQueue getQueue() {
@@ -47,9 +67,19 @@ public class Register {
         this.stack = stack;
     }
 
+    public String isAvailable() {
+        if(isState()) {
+            return "Available";
+        } else {
+            return "Busy";
+        }
+    }
+    
     @Override
     public String toString() {
-        return "Desk: " + getCorrelative();
+        return "Desk: " + getCorrelative() + "\n"
+                +"Passenger: " + getPassenger().getCorrelative() +"\n"
+                +"Turns: " + getPassenger().getRegisterTurns() + "\n";
     }
     
     

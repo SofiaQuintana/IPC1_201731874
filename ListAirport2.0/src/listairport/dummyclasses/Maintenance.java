@@ -43,4 +43,15 @@ public class Maintenance {
         }
     }
 
+    @Override
+    public String toString() {
+        if(getAirplane() == null) {
+            return "Maintenance:  \n" +
+                   "State: "+ isAvailable() + "\n" + "Airplane: Ninguno \n";
+        } else {
+        return "Maintenance:  \n" +
+                   "State: "+ isAvailable() + "\n" + "Airplane " + getAirplane().getCorrelative() + "\n"
+                + "Maintenance Turns: " + getAirplane().getMaintenanceTurn() + "\n";
+        } 
+    } 
 }

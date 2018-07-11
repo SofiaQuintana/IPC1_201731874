@@ -5,6 +5,7 @@
  */
 package listairport.main;
 
+import listairport.frontIn.InfoDialog;
 import listairport.frontIn.PrincipalFrame;
 
 /**
@@ -20,6 +21,8 @@ public class ListAirport20 {
         // TODO code application logic here
         PrincipalFrame frame = new PrincipalFrame();
         frame.setVisible(true);
+//            InfoDialog dialog = new InfoDialog(null, true);
+//            dialog.setVisible(true);
     }
     
 }

@@ -7,6 +7,7 @@ package listairport.backend;
 
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import listairport.dummyclasses.Passenger;
 import listairport.edd.AirplaneList;
 import listairport.edd.BagList;
 import listairport.edd.DocumentStack;
@@ -57,19 +58,19 @@ public class GeneralController {
                 type = "Small";
                 desabordaje = 1;
                 passengers = (int) ((Math.random() * 6) + 5);
-                maintenance = (int) ((Math.random() * 3) + 1);
+                maintenance = (int) (Math.random() * 3) + 1;
                 break;
             case 2:
                 type = "Medium";
                 desabordaje = 2;
                 passengers = (int) ((Math.random() * 11) + 15);
-                maintenance = (int) ((Math.random() * 3) + 2);
+                maintenance = (int) (Math.random() * 3) + 2;
                 break;
             case 3:
                 type = "Large";
                 desabordaje = 3;
                 passengers = (int) ((Math.random() * 11) + 30);
-                maintenance = (int) ((Math.random() * 6) + 3);
+                maintenance = (int) (Math.random() * 5) + 3;
                 break;
             default:
                 break;
@@ -97,9 +98,13 @@ public class GeneralController {
     public void eliminatePassengers() {
         int passenger = 5;
         while (passenger != 0) {
-            bagsList.deleteBag(passengersQueue.getBags());
-            passengersQueue.eliminateData();
-            passenger--;
+            if(registerList.getSizeSpace()) {
+                registerList.setPassenger((Passenger) passengersQueue.eliminateData());
+            } else {
+	bagsList.deleteBag(passengersQueue.getBags());
+                passengersQueue.eliminateData();
+                passenger = passenger - 1;
+            }		
         }
     }
 
@@ -131,14 +136,24 @@ public class GeneralController {
         //Generador de imagenes para aviones.
         graphics.createDotFileDoubleList(planesList.start, "Planes");
         graphics.generateImage("Planes.dot", "planes.png");
+        //Generador de imagenes de estaciones.
+        graphics.createDotFileList(maintenanceList.start, "Station");
+        graphics.generateImage("Station.dot", "station.png");
         //Generador de imagenes para pasajeros.
-        
-
-    }
-    
-    public void generateImagePassengers() {
         graphics.createDotFileList(passengersQueue.start, "Passengers");
         graphics.generateImage("Passengers.dot", "passenger.png");
+        //cola de estaciones.
+        graphics.createDotFileList(maintenanceQueue.start, "QueueMaintenance");
+        graphics.generateImage("QueueMaintenance.dot", "queueM.png");
+        //Generador de imagenes de maletas.
+        graphics.createDotFileBagList(bagsList.start, bagsList.ending, "Bags");
+        graphics.generateImage("Bags.dot", "bags.png");
+        //Generador de imagenes de Registro.
+        graphics.createDotFileDesks(registerList.start, "Desks");
+        graphics.generateImage("Desks.dot", "desks.png");
+        //Generador de imagenes Escritorios
+        graphics.createDotFileList(secondPassengerQueue.start, "Queue");
+        graphics.generateImage("Queue.dot", "queue.png");
     }
     
     public void printTerminal(JTextArea terminal, int turns) {
@@ -150,16 +165,13 @@ public class GeneralController {
         passengersQueue.printPassengers(terminal);
 
         terminal.append("\n ----------- REGISTER -----------\n");
-        registerList.printDesk(terminal);
+        registerList.printDesk(terminal, bagsList);
         
         terminal.append("\n --------- BAGS ---------\n");
         bagsList.printBags(terminal);
 
         terminal.append("\n --------- STATIONS ---------\n");
         maintenanceList.printMaintenance(terminal);
-
-        terminal.append("\n --------- QUEUE ---------\n");
-        maintenanceQueue.printStationInformation(terminal);
 
         terminal.append("\n**************************** TURN ENDING  " + turns + "****************************\n");
     }
@@ -174,19 +186,18 @@ public class GeneralController {
         }
         if (!initialized) {
             addPlanes();
-            initializeRegister();
             turns++;
             printTerminal(terminal, turns);
             initialized = true;
             generateImages();
-            generateImagePassengers();
             return;
         }
         eliminatePassengers();
         addPlanes();
+        registerList.addPassenger();
+        registerList.isAvailable();
         turns++;
         generateImages();
-        generateImagePassengers();
         printTerminal(terminal, turns);
     }
 
@@ -205,6 +216,7 @@ public class GeneralController {
         planesQuantity = Integer.parseInt(planeField.getText());
         stationsQuantity = Integer.parseInt(terminalField.getText());
         registerQuantity = Integer.parseInt(registerField.getText());
+        initializeRegister();
         addStations();
         printTerminal(terminal, turns);
     }
@@ -221,7 +233,7 @@ public class GeneralController {
             secondPassengerQueue = new PassengersQueue();
             stack = new DocumentStack();
             correlative = abecedario[i];
-            registerList.setRegister(correlative, secondPassengerQueue, stack);
+            registerList.setRegister(correlative, secondPassengerQueue, stack, null, true);
         }
     }
 }

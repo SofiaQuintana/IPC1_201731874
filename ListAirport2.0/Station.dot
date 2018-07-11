@@ -1,0 +1,13 @@
+digraph listasimple {
+ Node1450514918[label="Maintenance:  
+State: Available
+Airplane: Ninguno 
+"];
+Node1450514918->Node1765626646;
+ Node1765626646[label="Maintenance:  
+State: Busy
+Airplane 1
+Maintenance Turns: 2
+"];
+
+}

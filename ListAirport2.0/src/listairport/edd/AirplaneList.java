@@ -120,7 +120,7 @@ public class AirplaneList {
                     + avion.getType()
                     + "\n 	PASSENGERS: "
                     + avion.getPassengers()
-                    + "\n           DESABORDAJE TURNS: "
+                    + "\n                          DESABORDAJE TURNS: "
                     + avion.getDesabordajeTurn() + "\n 	MAINTENANCE TURNS: "
                     + avion.getMaintenanceTurn() + "\n");
         }

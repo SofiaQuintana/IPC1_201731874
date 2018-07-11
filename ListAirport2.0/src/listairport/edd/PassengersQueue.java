@@ -24,10 +24,14 @@ public class PassengersQueue {
     }
 
     public void setPassenger(int correlative, int bags, int documents, int registerTurns) {
-        Passenger pasajero = new Passenger(correlative, bags, documents, registerTurns);
-        insertData(pasajero);
+        Passenger passenger = new Passenger(correlative, bags, documents, registerTurns);
+        insertData(passenger);
     }
 
+    public void setPassenger(Passenger passenger) {
+        insertData(passenger);
+    }
+    
     public int getBags() {
         if (sizeQueue() != 0) {
             Passenger passenger = (Passenger) getData(sizeQueue() - 1);
@@ -47,7 +51,8 @@ public class PassengersQueue {
         size++;
     }
 
-    public Object eliminateData() {
+    //Metodo encargado de eliminar los pasajeros en cada turno, y enviarlos a una siguiente cola.
+    public Object eliminateData() { 
         if (isEmpty()) {
             return null;
         }
